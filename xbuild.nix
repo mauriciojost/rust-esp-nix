@@ -1,24 +1,24 @@
 /*
  * xbuild
  */
-{ stdenv, fetchFromGitHub, rustPlatform, pkgs }:
+{ stdenv, fetchFromGitHub, rustPlatform, pkgs, lib }:
 rustPlatform.buildRustPackage rec {
   version = "v0.5.29";
   pname = "cargo-xbuild";
 
   src = fetchFromGitHub {
-    owner = "rust-osdev";
+    owner = "mauriciojost";
     repo = "cargo-xbuild";
-    rev = version;
+    rev = "b278ae4aacac6b0c0c08cf869a283126ecdb5b9e";
 
-    sha256 = "05wg1xx2mcwb9cplmrpg13jimddlzmv7hf5g3vjppjp8kz2gb7zj";
+    sha256 = lib.fakeSha256;
   };
 
   propagatedBuildInputs = [
     pkgs.ncurses
   ];
 
-  cargoSha256 = "1pj8zfkr51y7lbjg9c3di4gr8a2l0z5gqslk6wmsiry6vcj2sks1";
+  cargoSha256 = lib.fakeSha256;
 
   /*
    * Just copied from upstream crates.io
